@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="nb" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trønnes tenker — tanker om teknologi, ideer og hverdagen.">
+  <title>Trønnes tenker</title>
+  <link rel="stylesheet" href="/dist/minium.min.css">
+  <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Hopp til innhold</a>
+
+  <header>
+    <div class="container repel">
+      <a href="/" class="tertiary" aria-current="page">Trønnes tenker</a>
+      <nav aria-label="Nettstednavigasjon">
+        <ul class="cluster" role="list">
+          <li><a href="/" aria-current="page">Innlegg</a></li>
+          <li><a href="/om.html">Om</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <div class="sidebar filter-sidebar no-stretch">
+
+        <aside aria-label="Filtrer innlegg">
+          <div class="flow">
+            <section aria-labelledby="categories-heading">
+              <h2 id="categories-heading" class="eyebrow">Kategorier</h2>
+              <ul role="list" class="cluster" id="category-list"></ul>
+            </section>
+            <section aria-labelledby="tags-heading">
+              <h2 id="tags-heading" class="eyebrow">Emner</h2>
+              <ul role="list" class="cluster" id="tag-list"></ul>
+            </section>
+          </div>
+        </aside>
+
+        <section aria-labelledby="posts-heading">
+          <div class="repel">
+            <h1 id="posts-heading">Innlegg</h1>
+            <p id="post-count" class="post-status" aria-live="polite" aria-atomic="true"></p>
+          </div>
+          <div class="flow" id="post-list">
+            <p aria-busy="true">Laster innlegg…</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><small>© <time datetime="2026">2026</time> Anne-Siri Trønnes</small></p>
+    </div>
+  </footer>
+
+  <script src="/js/blog.js"></script>
+</body>
+</html>
