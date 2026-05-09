@@ -1,0 +1,81 @@
+@layer project {
+  :root {
+    /* Purple as primary */
+    --color-primary: #7c3aed;
+    --color-primary-hover: #6d28d9;
+    --color-primary-focus: #a78bfa;
+    --color-primary-inverse: white;
+    --color-primary-fill: color-mix(in oklch, #7c3aed 10%, transparent);
+    --color-primary-fill-hover: color-mix(in oklch, #7c3aed 16%, transparent);
+    --color-primary-fill-active: color-mix(in oklch, #7c3aed 22%, transparent);
+    --color-primary-border-weak: color-mix(in oklch, #7c3aed 30%, transparent);
+    --color-primary-border-strong: color-mix(in oklch, #7c3aed 45%, transparent);
+    --color-primary-text: #5b21b6;
+
+    /* Sea green as accent */
+    --color-accent: #2e9e6b;
+    --color-accent-hover: #25865a;
+    --color-accent-focus: #6ee7b7;
+    --color-accent-inverse: white;
+    --color-accent-fill: color-mix(in oklch, #2e9e6b 10%, transparent);
+    --color-accent-fill-hover: color-mix(in oklch, #2e9e6b 16%, transparent);
+    --color-accent-fill-active: color-mix(in oklch, #2e9e6b 22%, transparent);
+    --color-accent-border-weak: color-mix(in oklch, #2e9e6b 30%, transparent);
+    --color-accent-border-strong: color-mix(in oklch, #2e9e6b 45%, transparent);
+    --color-accent-text: #1a6645;
+
+    --link-color-decoration: var(--color-primary);
+  }
+
+  /* Skip-to-content link */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--space-s);
+    z-index: 100;
+    padding: var(--space-2xs) var(--space-s);
+    background-color: var(--color-surface-raised);
+    border: var(--border-width) var(--border-style) var(--color-border-strong);
+    border-radius: var(--border-radius-s);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    top: var(--space-s);
+  }
+
+  /* Tag / filter pill */
+  .tag {
+    display: inline-block;
+    font-size: var(--size-tiny);
+    padding: var(--space-3xs) var(--space-2xs);
+    border-radius: var(--border-radius-f);
+    background-color: var(--color-accent-fill);
+    color: var(--color-accent-text);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    border: var(--border-width) var(--border-style) var(--color-accent-border-weak);
+
+    &:hover {
+      background-color: var(--color-accent-fill-hover);
+      border-color: var(--color-accent-border-strong);
+    }
+
+    &[aria-current="true"] {
+      background-color: var(--color-accent-fill-active);
+      border-color: var(--color-accent-border-strong);
+    }
+  }
+
+  /* Post count status */
+  .post-status {
+    font-size: var(--size-small);
+    color: var(--color-text-muted);
+  }
+
+  /* Narrow filter sidebar on larger screens */
+  .filter-sidebar {
+    --sidebar-target-width: 13rem;
+  }
+}
