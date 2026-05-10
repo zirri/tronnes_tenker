@@ -3,7 +3,7 @@ title: Velkommen til Trønnes tenker
 date: 2026-05-09
 category: meta
 tags: [blogg]
-excerpt: Hei og velkommen til _Trønnes tenker_, mitt lille hjørne av internett.
+excerpt: Hei og velkommen til <em>Trønnes tenker</em>, mitt lille hjørne av internett.
 ---
 
 Hei og velkommen til _Trønnes tenker_.

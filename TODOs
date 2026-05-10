@@ -1,0 +1,10 @@
+- Cleanup readme (ie only one way to serve)
+- Cleanup docs (remove accessability, wcag should be sufficient). Remove unnessessarraly specs
+- Take excerpt from start of post
+- Do not show excerpt when showing posts
+- A GUI-page to write blogposts showing as if an actual post (generating md text ready to copy)
+- Adjustments to logo (bigger and after one another???)
+- header and footer in separate files to ease changes?
+- rename dist folder to avoid confusion
+- Make logo and add to browser tab
+- categories and tags column needs some styling to fix width and justifications
