@@ -23,10 +23,10 @@ Dette leser alle `.md`-filer i `posts/`, parser frontmatter og skriver `posts/in
 **Alternativ A — npx serve (anbefalt, ingen installasjon):**
 
 ```bash
-npx serve .
+npx --yes serve .
 ```
 
-Åpne deretter [http://localhost:3000](http://localhost:3000).
+Åpne deretter [http://localhost:3000](http://localhost:3000). `--yes` aksepterer installasjonsprompten første gang `serve` kjøres.
 
 **Alternativ B — Python:**
 
