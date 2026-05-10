@@ -42,7 +42,7 @@ function postCard(post) {
   ).join('');
   return `<article class="flow">
     ${post.category ? `<span class="eyebrow">${post.category}</span>` : ''}
-    <h2><a href="/post.html?p=${post.slug}" class="tertiary">${post.title || post.slug}</a></h2>
+    <h2><a href="/post?p=${post.slug}" class="tertiary">${post.title || post.slug}</a></h2>
     <p class="cluster" style="--cluster-vertical-alignment:baseline">
       ${date ? `<time datetime="${post.date}">${date}</time>` : ''}
       ${tags}
