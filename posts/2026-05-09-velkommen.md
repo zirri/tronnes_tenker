@@ -2,14 +2,14 @@
 title: Velkommen til Trønnes tenker
 date: 2026-05-09
 category: meta
-tags: [blogg, start]
-excerpt: Første innlegg på en ny blogg om teknologi, ideer og hverdagsrefleksjoner.
+tags: [blogg]
+excerpt: Hei og velkommen til _Trønnes tenker_, mitt lille hjørne av internett.
 ---
 
-Hei og velkommen til *Trønnes tenker*.
+Hei og velkommen til _Trønnes tenker_.
 
-Dette er min lille hjørne av internett — et sted hvor jeg skriver om det som opptar tankene mine. Teknologi, ideer, verktøy jeg liker (eller ikke liker), og hverdagsrefleksjoner.
+Dette er min lille hjørne av internett — et sted der jeg kan reflektere høyt. Om politikk, samfunnet vi lever i eller bare noen øyeåpnere. For jeg ønsker å kunne være med å skape dialog, være litt nysgjerrig, og kanskje også endre mening?
 
-Ingen fast kadence, ingen stor plan. Bare tanker som fortjener mer enn 280 tegn.
+Jeg har ingen satt agenda, ingen stor plan. Men jeg har tanker og resonnementer som trenger mer enn 280 tegn.
 
-Mer kommer snart.
+Mer kommer snart!

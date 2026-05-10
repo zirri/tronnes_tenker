@@ -1,13 +1,23 @@
 [
   {
+    "slug": "2026-05-10-å-stole-på-legen",
+    "title": "Å stole på legen",
+    "date": "2026-05-10",
+    "category": "refleksjoner",
+    "tags": [
+      "helse",
+      "tillit"
+    ],
+    "excerpt": "Noen refleksjoner rundt det å stole på fagfolk og frykten for antibiotikaresistens"
+  },
+  {
     "slug": "2026-05-09-velkommen",
     "title": "Velkommen til Trønnes tenker",
     "date": "2026-05-09",
     "category": "meta",
     "tags": [
-      "blogg",
-      "start"
+      "blogg"
     ],
-    "excerpt": "Første innlegg på en ny blogg om teknologi, ideer og hverdagsrefleksjoner."
+    "excerpt": "Hei og velkommen til _Trønnes tenker_, mitt lille hjørne av internett."
   }
 ]
