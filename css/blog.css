@@ -55,4 +55,100 @@
   body > footer:last-of-type {
     padding-block: var(--space-2xs);
   }
+
+  /* Cosmic background — three nebula glows on a near-black base.
+     Fixed pseudo-element so the gradient stays put while content scrolls. */
+  body {
+    background-color: #07060f;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 55% at 18% 8%, rgba(94, 48, 168, 0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 65% 45% at 82% 28%, rgba(28, 86, 158, 0.45) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 45% at 55% 95%, rgba(18, 130, 140, 0.40) 0%, transparent 60%);
+  }
+
+  /* Starfield — tiled SVG of varied small dots, sits above the nebula */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='white'%3E%3Ccircle cx='20' cy='40' r='0.6' opacity='0.5'/%3E%3Ccircle cx='58' cy='92' r='1.2' opacity='0.9'/%3E%3Ccircle cx='110' cy='24' r='0.5' opacity='0.4'/%3E%3Ccircle cx='143' cy='158' r='1' opacity='0.8'/%3E%3Ccircle cx='180' cy='55' r='0.5' opacity='0.5'/%3E%3Ccircle cx='215' cy='128' r='0.8' opacity='0.7'/%3E%3Ccircle cx='252' cy='42' r='1.2' opacity='0.85'/%3E%3Ccircle cx='305' cy='90' r='0.5' opacity='0.4'/%3E%3Ccircle cx='348' cy='58' r='0.9' opacity='0.7'/%3E%3Ccircle cx='378' cy='152' r='0.5' opacity='0.5'/%3E%3Ccircle cx='32' cy='200' r='1' opacity='0.75'/%3E%3Ccircle cx='88' cy='242' r='0.5' opacity='0.4'/%3E%3Ccircle cx='128' cy='278' r='1.4' opacity='0.95'/%3E%3Ccircle cx='170' cy='222' r='0.6' opacity='0.55'/%3E%3Ccircle cx='212' cy='256' r='0.8' opacity='0.65'/%3E%3Ccircle cx='265' cy='204' r='0.5' opacity='0.4'/%3E%3Ccircle cx='298' cy='270' r='1.1' opacity='0.85'/%3E%3Ccircle cx='342' cy='222' r='0.5' opacity='0.5'/%3E%3Ccircle cx='385' cy='302' r='0.7' opacity='0.6'/%3E%3Ccircle cx='22' cy='320' r='0.5' opacity='0.4'/%3E%3Ccircle cx='62' cy='352' r='1' opacity='0.75'/%3E%3Ccircle cx='104' cy='370' r='0.5' opacity='0.4'/%3E%3Ccircle cx='160' cy='340' r='0.8' opacity='0.65'/%3E%3Ccircle cx='200' cy='380' r='0.6' opacity='0.5'/%3E%3Ccircle cx='248' cy='348' r='1.2' opacity='0.85'/%3E%3Ccircle cx='290' cy='370' r='0.5' opacity='0.4'/%3E%3Ccircle cx='338' cy='360' r='0.7' opacity='0.6'/%3E%3Ccircle cx='68' cy='150' r='0.5' opacity='0.4'/%3E%3Ccircle cx='8' cy='80' r='0.7' opacity='0.6'/%3E%3Ccircle cx='395' cy='15' r='0.9' opacity='0.75'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  /* Header and footer become tinted glass over the nebula */
+  body > header:first-of-type {
+    background-color: rgba(20, 12, 44, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: var(--border-width) solid rgba(170, 130, 230, 0.18);
+    box-shadow: none;
+    padding-block: var(--space-s);
+  }
+
+  body > footer:last-of-type {
+    background-color: rgba(8, 30, 40, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: var(--border-width) solid rgba(80, 200, 200, 0.15);
+  }
+
+  /* Site title gets a soft luminous glow */
+  body > header:first-of-type a.tertiary {
+    color: #d8c8ff;
+    text-shadow: 0 0 18px rgba(160, 110, 230, 0.45);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Site-title wordmark: "Trønnes" on top, "Tenker" rotated 180° below,
+     two T's framing the composition with parallel stems at opposite corners. */
+  .site-title {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-title svg {
+    height: 2.4em;
+    width: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 10px rgba(170, 120, 240, 0.55));
+  }
+
+  /* Post cards (index) and post body (article view) share a solid card style:
+     opaque dark surface, soft purple border, rounded corners. */
+  #post-list > article,
+  #post-content > article {
+    padding: var(--space-s);
+    border-radius: var(--border-radius-m);
+    background-color: #14102a;
+    border: var(--border-width) solid rgba(170, 130, 230, 0.22);
+  }
+
+  /* Tags glow gently on hover */
+  .tag {
+    transition: box-shadow 0.18s ease, background-color 0.18s ease;
+  }
+
+  .tag:hover {
+    box-shadow: 0 0 14px rgba(20, 200, 180, 0.35);
+  }
+
+  /* Soft teal glow on links on hover (excluding tag chips, which already glow) */
+  a {
+    transition: text-shadow 0.18s ease;
+  }
+
+  a:not(.tag):hover {
+    text-shadow: 0 0 14px rgba(170, 120, 240, 0.55);
+  }
 }
