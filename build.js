@@ -4,7 +4,7 @@ const path = require('path');
 const postsDir = path.join(__dirname, 'posts');
 
 function parseFrontmatter(text) {
-  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return null;
   const meta = {};
   for (const line of match[1].split('\n')) {
@@ -18,7 +18,26 @@ function parseFrontmatter(text) {
       meta[key] = val;
     }
   }
-  return meta;
+  return { meta, body: match[2] };
+}
+
+function deriveExcerpt(body, maxLen = 200) {
+  const firstPara = body
+    .replace(/^\s+/, '')
+    .split(/\r?\n\s*\r?\n/)
+    .find(p => p.trim() && !p.trim().startsWith('#'));
+  if (!firstPara) return '';
+  const plain = firstPara
+    .replace(/\r?\n/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[*_`>#]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (plain.length <= maxLen) return plain;
+  const cut = plain.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut) + '…';
 }
 
 const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
@@ -26,11 +45,13 @@ const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
 const posts = files.flatMap(file => {
   const slug = file.replace(/\.md$/, '');
   const text = fs.readFileSync(path.join(postsDir, file), 'utf8');
-  const meta = parseFrontmatter(text);
-  if (!meta) {
+  const parsed = parseFrontmatter(text);
+  if (!parsed) {
     console.warn(`Hopper over ${file}: mangler frontmatter`);
     return [];
   }
+  const { meta, body } = parsed;
+  if (!meta.excerpt) meta.excerpt = deriveExcerpt(body);
   return [{ slug, ...meta }];
 });
 

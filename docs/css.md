@@ -1,8 +1,8 @@
 # CSS conventions
 
-All blog-specific styles go in `/css/blog.css` under `@layer project { }`. Never edit `/dist/`.
+All blog-specific styles go in `/css/blog.css` under `@layer project { }`. Never edit `/assets/styles/`.
 
-The minium framework in `/dist/` already ships with the site's correct color palette — do not redefine `--color-primary*` or `--color-accent*` in `blog.css`.
+The minium framework in `/assets/styles/` already ships with the site's correct color palette — do not redefine `--color-primary*` or `--color-accent*` in `blog.css`.
 
 ## Tag styling
 

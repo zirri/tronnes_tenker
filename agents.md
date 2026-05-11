@@ -9,7 +9,7 @@ This document defines the coding standards, architectural decisions, and style g
 - Language: Norwegian (UI labels, metadata, etc.)
 - Stack: plain HTML, CSS, vanilla JS — one lightweight build script, no framework, no bundler
 - Markdown posts rendered client-side with [marked.js](https://cdn.jsdelivr.net/npm/marked/marked.min.js) (loaded via CDN `<script>` tag)
-- CSS framework: `minium.css` (located in `/dist/`) — a custom layer-based CSS system, ships with the site's color palette
+- CSS framework: `minium.css` (located in `/assets/styles/`) — a custom layer-based CSS system, ships with the site's color palette
 - Accessibility: WCAG 2.2 AA compliance is a hard requirement, not a nice-to-have
 
 ## File structure
@@ -20,11 +20,12 @@ This document defines the coding standards, architectural decisions, and style g
 ├── post.html           # Post reader — loads and renders a markdown file
 ├── 404.html            # Cloudflare Pages 404
 ├── build.js            # Build script: scans posts/, writes posts/index.json
-├── dist/               # CSS framework (do not edit)
-│   ├── minium.css
-│   ├── minium.min.css
-│   ├── colors.pruned.css
-│   └── fonts/
+├── assets/
+│   └── styles/         # CSS framework (do not edit)
+│       ├── minium.css
+│       ├── minium.min.css
+│       ├── colors.pruned.css
+│       └── fonts/
 ├── css/
 │   └── blog.css        # Blog-specific overrides (project layer)
 ├── js/
@@ -43,7 +44,8 @@ Add no other top-level files unless necessary. Keep structure flat.
 - [Post format](docs/posts.md) — markdown frontmatter
 - [JavaScript conventions](docs/javascript.md) — JS rules, page flows, build script
 - [CSS conventions](docs/css.md) — layering, tag styling, custom properties
-- [Accessibility](docs/accessibility.md) — WCAG 2.2 AA requirements and checklist
+
+Accessibility: WCAG 2.2 AA compliance is required throughout.
 
 ## What to avoid
 
@@ -61,4 +63,4 @@ Add no other top-level files unless necessary. Keep structure flat.
 - SPA-style routing is NOT used — each page is a real HTML file
 - `404.html` at root is picked up automatically by Cloudflare Pages
 - No `_redirects` file needed initially
-- Asset paths are root-relative (`/dist/minium.min.css`, `/posts/index.json`)
+- Asset paths are root-relative (`/assets/styles/minium.min.css`, `/posts/index.json`)

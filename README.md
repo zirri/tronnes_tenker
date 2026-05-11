@@ -18,28 +18,13 @@ Dette leser alle `.md`-filer i `posts/`, parser frontmatter og skriver `posts/in
 
 ### 2. Start lokal server
 
-Åpne filen direkte i nettleseren (`file://`) fungerer **ikke** — nettleseren blokkerer `fetch()`-kall til lokale filer. Du trenger en enkel HTTP-server.
-
-**Alternativ A — npx serve (anbefalt, ingen installasjon):**
+Åpne filen direkte i nettleseren (`file://`) fungerer **ikke** — nettleseren blokkerer `fetch()`-kall til lokale filer. Bruk `npx serve`:
 
 ```bash
 npx --yes serve .
 ```
 
 Åpne deretter [http://localhost:3000](http://localhost:3000). `--yes` aksepterer installasjonsprompten første gang `serve` kjøres.
-
-**Alternativ B — Python:**
-
-```bash
-# Python 3
-python -m http.server 8000
-```
-
-Åpne deretter [http://localhost:8000](http://localhost:8000).
-
-**Alternativ C — VS Code Live Server:**
-
-Installer utvidelsen [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer), høyreklikk på `index.html` og velg *Open with Live Server*.
 
 ## Skrive et nytt innlegg
 
@@ -76,7 +61,7 @@ Brødteksten starter her...
 ├── 404.html            # Feilside
 ├── build.js            # Genererer posts/index.json
 ├── agents.md           # Retningslinjer for AI-agenter
-├── dist/               # CSS-rammeverk (ikke rediger)
+├── assets/styles/      # CSS-rammeverk (ikke rediger)
 ├── css/
 │   └── blog.css        # Blogspesifikke stiler
 ├── js/

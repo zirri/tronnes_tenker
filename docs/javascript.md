@@ -23,26 +23,6 @@
 
 ## Build script (`build.js`)
 
-Plain Node.js, no npm dependencies — uses only `fs` and `path` from stdlib.
+Plain Node.js, no npm dependencies. Reads `posts/*.md`, parses frontmatter, writes `posts/index.json` sorted by date descending. If a post lacks an `excerpt`, build.js auto-generates one from the first paragraph.
 
-Responsibilities:
-1. Read all `*.md` files from `posts/`
-2. Parse each file's frontmatter (everything between the first two `---` lines)
-3. Write `posts/index.json` — an array of post metadata objects sorted by date descending
-
-Output format:
-
-```json
-[
-  {
-    "slug": "2025-06-01-min-forste-post",
-    "title": "Min første post",
-    "date": "2025-06-01",
-    "category": "teknologi",
-    "tags": ["ai", "refleksjon"],
-    "excerpt": "En kort beskrivelse."
-  }
-]
-```
-
-Set the Cloudflare Pages build command to `node build.js`. Output directory remains `/` (root). `posts/index.json` is committed to the repo so the site also works when served locally without running the build.
+Cloudflare Pages build command: `node build.js`. `posts/index.json` is committed so the site works locally without running the build.
