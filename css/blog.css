@@ -35,9 +35,22 @@
     }
 
     &[aria-current="true"] {
-      background-color: var(--color-accent-fill-active);
-      border-color: var(--color-accent-border-strong);
+      background-color: #d8c8ff;
+      border-color: #d8c8ff;
+      color: #1a0d36;
+      box-shadow: 0 0 0 2px #d8c8ff, 0 0 18px rgba(216, 200, 255, 0.7);
+      outline: none;
     }
+  }
+
+  /* Filter sidebar: pull tag/category lists tight under their headings */
+  .filter-sidebar section > .eyebrow {
+    margin: 0 0 var(--space-2xs);
+  }
+
+  .filter-sidebar section > ul.cluster {
+    margin: 0;
+    padding: 0;
   }
 
   /* Post count status */

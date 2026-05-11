@@ -4,36 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trønnes tenker</title>
-  <link rel="stylesheet" href="/dist/minium.min.css">
+  <link rel="stylesheet" href="/assets/styles/minium.min.css">
   <link rel="stylesheet" href="/css/blog.css">
 </head>
-<body>
+<body data-nav="index">
   <a href="#main-content" class="skip-link">Hopp til innhold</a>
 
-  <header>
-    <div class="container repel">
-      <a href="/" class="tertiary site-title" aria-label="Trønnes tenker">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 56" fill="currentColor" aria-hidden="true">
-          <g font-family="'PT Sans', system-ui, sans-serif" font-weight="700">
-            <rect x="0" y="2" width="22" height="4.5" rx="1.25"/>
-            <rect x="8.75" y="2" width="4.5" height="22" rx="1.25"/>
-            <text x="25" y="18" font-size="17">rønnes</text>
-            <g transform="rotate(180 60 28)">
-              <rect x="0" y="2" width="22" height="4.5" rx="1.25"/>
-              <rect x="8.75" y="2" width="4.5" height="22" rx="1.25"/>
-              <text x="25" y="18" font-size="17">enker</text>
-            </g>
-          </g>
-        </svg>
-      </a>
-      <nav aria-label="Nettstednavigasjon">
-        <ul class="cluster" role="list">
-          <li><a href="/">Innlegg</a></li>
-          <li><a href="/om.html">Om</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <div data-include="header"></div>
 
   <main id="main-content">
     <div class="container slim flow">
@@ -44,13 +21,10 @@
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <p><small>© <time datetime="2026">2026</time> Anne-Siri Trønnes</small></p>
-    </div>
-  </footer>
+  <div data-include="footer"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="/js/includes.js"></script>
   <script src="/js/blog.js"></script>
 </body>
 </html>

@@ -149,10 +149,7 @@ async function initPost() {
 
   container.innerHTML = `<article class="flow">
     ${meta.category ? `<p><a href="/?category=${encodeURIComponent(meta.category)}" class="tag">${meta.category}</a></p>` : ''}
-    <hgroup>
-      <h1>${meta.title || slug}</h1>
-      ${meta.excerpt ? `<p>${meta.excerpt}</p>` : ''}
-    </hgroup>
+    <h1>${meta.title || slug}</h1>
     ${date || tags ? `<p class="cluster" style="--cluster-vertical-alignment:baseline">
       ${date ? `<time datetime="${meta.date}">${date}</time>` : ''}
       ${tags}

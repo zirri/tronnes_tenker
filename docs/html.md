@@ -2,48 +2,10 @@
 
 ## Page shell
 
-Every page uses this shell:
-
-```html
-<!doctype html>
-<html lang="nb" data-theme="light">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><!-- page title --> — Trønnes tenker</title>
-  <link rel="stylesheet" href="/dist/minium.min.css">
-  <link rel="stylesheet" href="/css/blog.css">
-</head>
-<body>
-  <a href="#main-content" class="skip-link">Hopp til innhold</a>
-
-  <header>
-    <div class="container repel">
-      <a href="/" class="tertiary">Trønnes tenker</a>
-      <nav aria-label="Nettstednavigasjon">
-        <!-- nav links with aria-current="page" on active link -->
-      </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- page content -->
-  </main>
-
-  <footer>
-    <div class="container">
-      <!-- footer content -->
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="/js/blog.js"></script>
-</body>
-</html>
-```
+Every page follows the same shell. Look at `index.html` for the canonical example, and reuse the shared header/footer via `js/includes.js` (which injects them client-side).
 
 - `lang="nb"` always (bokmål)
-- `data-theme` on `<html>`: `"light"` by default; toggling to `"dark"` switches the minium color scheme
+- `data-theme` on `<html>`: `"dark"` (default) or `"light"` — switches the minium color scheme
 - Scripts at end of `<body>`
 
 ## Layout classes (from minium.css)
