@@ -31,7 +31,7 @@ Use these — do not recreate them:
   <h2><a href="/post.html?p=YYYY-MM-DD-slug" class="tertiary"><!-- title --></a></h2>
   <p class="cluster" style="--cluster-vertical-alignment: baseline">
     <small><!-- date --></small>
-    <!-- tags rendered as: <a href="/?tag=foo" class="tag">foo</a> -->
+    <!-- tags rendered as: <a href="/?tag=foo" class="pill accent">foo</a> -->
   </p>
   <p><!-- excerpt --></p>
 </article>
