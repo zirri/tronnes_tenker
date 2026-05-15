@@ -6,27 +6,9 @@ The minium framework in `/assets/styles/` already ships with the site's correct 
 
 ## Tag styling
 
-Tags are `<a>` elements with class `.tag`. Define in `blog.css`:
+Tags are `<a>` elements rendered with the minium badge component: `class="pill accent"`. This gives the accent-coloured, fully rounded chip with hover state for free — do not redefine the base styles in `blog.css`.
 
-```css
-@layer project {
-  .tag {
-    font-size: var(--size-tiny);
-    padding: var(--space-3xs) var(--space-2xs);
-    border-radius: var(--border-radius-f);
-    background-color: var(--color-accent-fill);
-    color: var(--color-accent-text);
-    text-decoration: none;
-    font-weight: var(--font-weight-bold);
-    border: var(--border-width) solid var(--color-accent-border-weak);
-
-    &:hover {
-      background-color: var(--color-accent-fill-hover);
-      border-color: var(--color-accent-border-strong);
-    }
-  }
-}
-```
+Project-specific overrides (cosmic active-state glow, hover shadow) live in `blog.css` and target `a.pill` / `a.pill[aria-current="true"]`.
 
 ## General rules
 

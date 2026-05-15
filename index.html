@@ -17,24 +17,10 @@
     <div class="container">
       <div class="sidebar filter-sidebar no-stretch">
 
-        <aside aria-label="Filtrer innlegg">
-          <div class="flow">
-            <section aria-labelledby="categories-heading">
-              <h2 id="categories-heading" class="eyebrow">Kategorier</h2>
-              <ul role="list" class="cluster" id="category-list"></ul>
-            </section>
-            <section aria-labelledby="tags-heading">
-              <h2 id="tags-heading" class="eyebrow">Emner</h2>
-              <ul role="list" class="cluster" id="tag-list"></ul>
-            </section>
-          </div>
-        </aside>
+        <div data-include="sidebar"></div>
 
-        <section aria-labelledby="posts-heading">
-          <div class="repel">
-            <h1 id="posts-heading">Innlegg</h1>
-            <p id="post-count" class="post-status" aria-live="polite" aria-atomic="true"></p>
-          </div>
+        <section aria-label="Innlegg" class="flow">
+          <p id="post-count" class="post-status" aria-live="polite" aria-atomic="true" hidden></p>
           <div class="flow" id="post-list">
             <p aria-busy="true">Laster innlegg…</p>
           </div>
