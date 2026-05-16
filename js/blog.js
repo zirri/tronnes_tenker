@@ -151,7 +151,6 @@ async function initPost() {
   }
 
   const { meta, body } = parseFrontmatter(text);
-  if (meta.title) document.title = `${meta.title} — Trønnes tenker`;
 
   const date = formatDate(meta.date);
 
