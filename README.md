@@ -18,24 +18,24 @@ Dette leser alle `.md`-filer i `posts/`, parser frontmatter og skriver `posts/in
 
 ### 2. Start lokal server
 
-Åpne filen direkte i nettleseren (`file://`) fungerer **ikke** — nettleseren blokkerer `fetch()`-kall til lokale filer. Bruk `npx serve`:
+Åpne filen direkte i nettleseren (`file://`) fungerer **ikke** — nettleseren blokkerer `fetch()`-kall til lokale filer. Bruk `npx serve .`:
 
 ```bash
 npx --yes serve .
 ```
 
-Åpne deretter [http://localhost:3000](http://localhost:3000). `--yes` aksepterer installasjonsprompten første gang `serve` kjøres.
-
 ## Skrive et nytt innlegg
 
-1. Opprett en ny fil i `posts/` med formatet `YYYY-MM-DD-slug.md`
-2. Start filen med frontmatter:
+1. Go to http://localhost:3000/ny
+1. Kopier inn md-fila i `posts/` med filnavn `YYYY-MM-DD-slug.md`
+1. Start filen med frontmatter:
 
 ```markdown
 ---
 title: Tittelen på innlegget
 date: 2026-05-09
 category: teknologi
+tags: [ai, verktøy]
 excerpt: En kort beskrivelse som vises på forsiden.
 ---
 
