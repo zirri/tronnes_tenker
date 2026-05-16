@@ -23,13 +23,12 @@ function formatDate(str) {
   });
 }
 
-function filterUrl(key, val) {
+function filterUrl(val) {
   const p = new URLSearchParams(window.location.search);
-  if (p.get(key) === val) {
-    p.delete(key);
+  if (p.get('category') === val) {
+    p.delete('category');
   } else {
-    p.set(key, val);
-    p.delete(key === 'tag' ? 'category' : 'tag');
+    p.set('category', val);
   }
   const qs = p.toString();
   return qs ? '?' + qs : window.location.pathname;
@@ -37,53 +36,43 @@ function filterUrl(key, val) {
 
 function postCard(post) {
   const date = formatDate(post.date);
-  const tags = (post.tags || []).map(t =>
-    `<a href="${filterUrl('tag', t)}" class="pill accent">${t}</a>`
-  ).join('');
   return `<article class="flow">
-    ${post.category ? `<span class="eyebrow">${post.category}</span>` : ''}
+    <div class="repel">
+      <span class="eyebrow">${post.category || ''}</span>
+      ${date ? `<time class="eyebrow" datetime="${post.date}">${date}</time>` : ''}
+    </div>
     <h2><a href="/post?p=${post.slug}" class="tertiary">${post.title || post.slug}</a></h2>
-    <p class="cluster" style="--cluster-vertical-alignment:baseline">
-      ${date ? `<time datetime="${post.date}">${date}</time>` : ''}
-      ${tags}
-    </p>
     ${post.excerpt ? `<p>${post.excerpt}</p>` : ''}
   </article>`;
 }
 
 function update(posts) {
   const p = new URLSearchParams(window.location.search);
-  const activeTag = p.get('tag');
   const activeCat = p.get('category');
 
-  const filtered = posts.filter(post => {
-    if (activeTag) return (post.tags || []).includes(activeTag);
-    if (activeCat) return post.category === activeCat;
-    return true;
-  });
+  const filtered = activeCat
+    ? posts.filter(post => post.category === activeCat)
+    : posts;
 
-  document.querySelectorAll('[data-filter-key]').forEach(el => {
-    const key = el.dataset.filterKey;
+  document.querySelectorAll('[data-filter-val]').forEach(el => {
     const val = el.dataset.filterVal;
-    const isActive = (key === 'tag' && val === activeTag) || (key === 'category' && val === activeCat);
-    el.setAttribute('href', filterUrl(key, val));
-    el.setAttribute('aria-current', isActive ? 'true' : 'false');
+    el.setAttribute('href', filterUrl(val));
+    el.setAttribute('aria-current', val === activeCat ? 'true' : 'false');
   });
 
   const list = document.getElementById('post-list');
-  list.innerHTML = filtered.length
+  const cards = filtered.length
     ? filtered.map(postCard).join('')
     : '<p>Ingen innlegg funnet.</p>';
+  const clearLink = activeCat
+    ? `<p style="--flow-space: var(--space-l)"><a href="/" class="secondary">‹ Alle innlegg</a></p>`
+    : '';
+  list.innerHTML = cards + clearLink;
 
   const status = document.getElementById('post-count');
   if (status) {
-    const activeFilter = activeTag
-      ? `emne «${activeTag}»`
-      : activeCat
-      ? `kategori «${activeCat}»`
-      : null;
-    if (activeFilter) {
-      status.textContent = `Viser innlegg med ${activeFilter}`;
+    if (activeCat) {
+      status.textContent = `Viser innlegg med kategori «${activeCat}»`;
       status.hidden = false;
     } else {
       status.textContent = '';
@@ -92,39 +81,39 @@ function update(posts) {
   }
 }
 
-async function initIndex() {
-  const list = document.getElementById('post-list');
-  let posts = [];
+async function fetchPosts() {
   try {
     const res = await fetch('/posts/index.json');
     if (!res.ok) throw new Error(res.status);
-    posts = await res.json();
+    return await res.json();
   } catch {
-    list.innerHTML = '<p>Kunne ikke laste innlegg.</p>';
-    return;
+    return null;
   }
+}
 
-  const cats = [...new Set(posts.map(p => p.category).filter(Boolean))].sort();
-  const tags = [...new Set(posts.flatMap(p => p.tags || []))].sort();
-
-  // The cat/tag lists live in the injected sidebar partial — wait for it.
-  if (!document.getElementById('tag-list')) {
+async function renderSidebarCategories(posts, hrefFn) {
+  if (!document.getElementById('category-list')) {
     await new Promise(resolve =>
       document.addEventListener('includes:loaded', resolve, { once: true })
     );
   }
-
   const catList = document.getElementById('category-list');
-  const tagList = document.getElementById('tag-list');
-
-  if (catList) catList.innerHTML = cats.map(c =>
-    `<li><a href="${filterUrl('category', c)}" class="pill accent" data-filter-key="category" data-filter-val="${c}">${c}</a></li>`
+  if (!catList) return;
+  const cats = [...new Set(posts.map(p => p.category).filter(Boolean))].sort();
+  catList.innerHTML = cats.map(c =>
+    `<li><a href="${hrefFn(c)}" class="pill accent" data-filter-val="${c}">${c}</a></li>`
   ).join('');
+}
 
-  if (tagList) tagList.innerHTML = tags.map(t =>
-    `<li><a href="${filterUrl('tag', t)}" class="pill accent" data-filter-key="tag" data-filter-val="${t}">${t}</a></li>`
-  ).join('');
+async function initIndex() {
+  const list = document.getElementById('post-list');
+  const posts = await fetchPosts();
+  if (!posts) {
+    list.innerHTML = '<p>Kunne ikke laste innlegg.</p>';
+    return;
+  }
 
+  await renderSidebarCategories(posts, filterUrl);
   update(posts);
 
   document.addEventListener('click', e => {
@@ -138,6 +127,12 @@ async function initIndex() {
   });
 
   window.addEventListener('popstate', () => update(posts));
+}
+
+async function initSidebarOnly() {
+  const posts = await fetchPosts();
+  if (!posts) return;
+  await renderSidebarCategories(posts, c => `/?category=${encodeURIComponent(c)}`);
 }
 
 async function initPost() {
@@ -159,21 +154,22 @@ async function initPost() {
   if (meta.title) document.title = `${meta.title} — Trønnes tenker`;
 
   const date = formatDate(meta.date);
-  const tags = (meta.tags || []).map(t =>
-    `<a href="/?tag=${encodeURIComponent(t)}" class="pill accent">${t}</a>`
-  ).join('');
 
   container.innerHTML = `<article class="flow">
-    ${meta.category ? `<p><a href="/?category=${encodeURIComponent(meta.category)}" class="pill accent">${meta.category}</a></p>` : ''}
+    <div class="repel">
+      <span class="eyebrow">${meta.category || ''}</span>
+      ${date ? `<time class="eyebrow" datetime="${meta.date}">${date}</time>` : ''}
+    </div>
     <h1>${meta.title || slug}</h1>
-    ${date || tags ? `<p class="cluster" style="--cluster-vertical-alignment:baseline">
-      ${date ? `<time datetime="${meta.date}">${date}</time>` : ''}
-      ${tags}
-    </p>` : ''}
     <hr>
     <div class="flow">${marked.parse(body)}</div>
+    <p class="post-back" style="--flow-space: var(--space-l)"><a href="/" class="secondary">‹ Alle innlegg</a></p>
   </article>`;
 }
 
-if (document.getElementById('post-list')) initIndex();
+if (document.getElementById('post-list')) {
+  initIndex();
+} else {
+  initSidebarOnly();
+}
 if (document.getElementById('post-content')) initPost();

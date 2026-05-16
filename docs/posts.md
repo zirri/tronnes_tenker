@@ -7,7 +7,6 @@ Every post file lives in `posts/` as `YYYY-MM-DD-slug.md` and starts with a YAML
 title: Tittelen på innlegget
 date: 2025-06-01
 category: teknologi
-tags: [ai, verktøy, refleksjon]
 excerpt: En kort beskrivelse som vises på forsiden.
 ---
 

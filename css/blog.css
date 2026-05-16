@@ -48,10 +48,10 @@
     padding: 0;
   }
 
-  /* Post count status */
+  /* Active filter status — clearer than muted helper text, but not a full pill */
   .post-status {
-    font-size: var(--size-small);
-    color: var(--color-text-muted);
+    color: #d8c8ff;
+    font-weight: var(--font-weight-bold);
   }
 
   /* Narrow filter sidebar on larger screens */
@@ -59,7 +59,28 @@
     --sidebar-target-width: 15rem;
   }
 
-  /* Sidebar — one translucent card containing about + categories + tags. */
+  /* The about-photo is cloned above the container by includes.js so it can
+     appear on top when the sidebar stacks below on mobile. Hidden by default. */
+  .about-photo.mobile-photo {
+    display: none;
+  }
+
+  /* On mobile (when the sidebar layout stacks): show the top-of-page photo,
+     hide the one inside the sidebar, and put the sidebar below content. */
+  @media (max-width: 45rem) {
+    .filter-sidebar > .page-sidebar {
+      order: 2;
+    }
+    .page-sidebar .about-photo {
+      display: none;
+    }
+    .about-photo.mobile-photo {
+      display: block;
+      margin-top: var(--space-s);
+    }
+  }
+
+  /* Sidebar — one translucent card containing about + categories. */
   .page-sidebar {
     margin-top: 0;
   }
@@ -170,7 +191,7 @@
         rgba(20, 90, 110, 0.40) 100%
       ),
       /* Strong overall darken so cards don't need their own background */
-      rgba(8, 8, 22, 0.7);
+      rgba(4, 4, 12, 0.85);
     mix-blend-mode: normal;
   }
 
@@ -184,31 +205,24 @@
     padding-block: var(--space-s);
   }
 
-  /* Post cards (index) and post body (article view) — a translucent darker
-     overlay over the already-darkened background, no border. */
+  /* Post cards (index), post body (article view), and standalone content cards
+     (om, 404) — a translucent darker overlay over the already-darkened
+     background, no border. */
   #post-list > article,
-  #post-content > article {
+  #post-content > article,
+  .content-card {
     padding: var(--space-s);
     border-radius: var(--border-radius-m);
     background-color: rgba(0, 0, 0, 0.35);
     border: none;
   }
 
-  /* Pills glow teal on hover */
+  /* Hide "Om meg" link in sidebar when already on the om page */
+  body[data-nav="om"] .about-link {
+    display: none;
+  }
+
   a.pill {
-    transition: box-shadow 0.18s ease, background-color 0.18s ease;
-  }
-
-  a.pill:hover {
-    box-shadow: 0 0 14px rgba(20, 200, 180, 0.4);
-  }
-
-  /* Purple glow on links on hover (excluding pill chips, which already glow) */
-  a {
-    transition: text-shadow 0.18s ease;
-  }
-
-  a:not(.pill):hover {
-    text-shadow: 0 0 14px rgba(170, 120, 240, 0.55);
+    transition: background-color 0.18s ease;
   }
 }
