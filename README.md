@@ -36,7 +36,6 @@ npx --yes serve .
 title: Tittelen på innlegget
 date: 2026-05-09
 category: teknologi
-tags: [ai, verktøy]
 excerpt: En kort beskrivelse som vises på forsiden.
 ---
 

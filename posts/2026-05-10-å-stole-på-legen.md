@@ -2,7 +2,6 @@
 title: Å stole på legen
 date: 2026-05-10
 category: refleksjoner
-tags: [helse, tillit]
 excerpt: Noen refleksjoner rundt det å stole på fagfolk og frykten for antibiotikaresistens
 ---
 

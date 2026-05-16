@@ -1,6 +1,6 @@
 const STORAGE_KEY = 'tt-draft-v1';
 
-const fields = ['title', 'slug', 'date', 'category', 'tags', 'excerpt', 'body'];
+const fields = ['title', 'slug', 'date', 'category', 'excerpt', 'body'];
 const el = Object.fromEntries(fields.map(f => [f, document.getElementById('f-' + f)]));
 const out = document.getElementById('f-output');
 const preview = document.getElementById('preview-article');
@@ -25,10 +25,6 @@ function formatDate(str) {
   return new Date(str + 'T00:00:00').toLocaleDateString('nb-NO', {
     year: 'numeric', month: 'long', day: 'numeric'
   });
-}
-
-function parseTags(s) {
-  return (s || '').split(',').map(t => t.trim()).filter(Boolean);
 }
 
 function deriveExcerpt(body, maxLen = 200) {
@@ -61,8 +57,6 @@ function buildMarkdown(state) {
   if (state.title) lines.push(`title: ${state.title}`);
   if (state.date) lines.push(`date: ${state.date}`);
   if (state.category) lines.push(`category: ${state.category}`);
-  const tags = parseTags(state.tags);
-  if (tags.length) lines.push(`tags: [${tags.join(', ')}]`);
   const excerpt = state.excerpt.trim() || deriveExcerpt(state.body);
   if (excerpt) lines.push(`excerpt: ${excerpt}`);
   lines.push('---', '', state.body || '');
@@ -70,30 +64,22 @@ function buildMarkdown(state) {
 }
 
 function renderPreview(state) {
-  const tags = parseTags(state.tags);
   const date = formatDate(state.date);
-  const tagsHtml = tags.map(t =>
-    `<a href="#" class="pill accent" onclick="event.preventDefault()">${escapeHtml(t)}</a>`
-  ).join('');
 
-  const hasAnything = state.title || state.body || state.category || tags.length || date;
+  const hasAnything = state.title || state.body || state.category || date;
   if (!hasAnything) {
     preview.innerHTML = '<p class="weak"><em>Begynn å skrive for å se forhåndsvisning.</em></p>';
     return;
   }
 
   const bodyHtml = state.body ? marked.parse(state.body) : '';
-  const metaLine = (date || tagsHtml)
-    ? `<p class="cluster" style="--cluster-vertical-alignment:baseline">
-         ${date ? `<time datetime="${escapeHtml(state.date)}">${escapeHtml(date)}</time>` : ''}
-         ${tagsHtml}
-       </p>`
-    : '';
 
   preview.innerHTML = `
-    ${state.category ? `<p><a href="#" class="pill accent" onclick="event.preventDefault()">${escapeHtml(state.category)}</a></p>` : ''}
+    <div class="repel">
+      <span class="eyebrow">${escapeHtml(state.category || '')}</span>
+      ${date ? `<time class="eyebrow" datetime="${escapeHtml(state.date)}">${escapeHtml(date)}</time>` : ''}
+    </div>
     <h1>${escapeHtml(state.title || '(uten tittel)')}</h1>
-    ${metaLine}
     <hr>
     <div class="flow">${bodyHtml}</div>
   `;

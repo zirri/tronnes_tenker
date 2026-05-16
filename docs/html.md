@@ -17,7 +17,7 @@ Use these — do not recreate them:
 | `.container` | Centered wrapper, max 75rem, responsive padding |
 | `.container.slim` | Narrow content column, max 68ch — use for post body |
 | `.flow` | Vertical rhythm via `margin-block-start` |
-| `.cluster` | Horizontal flex group with wrapping (tags, nav items) |
+| `.cluster` | Horizontal flex group with wrapping (pills, nav items) |
 | `.repel` | Space-between flex row (header logo + nav) |
 | `.grid` | Auto-fill grid for post cards |
 | `.sidebar` | Two-column layout: fixed sidebar + growing content |
@@ -31,7 +31,6 @@ Use these — do not recreate them:
   <h2><a href="/post.html?p=YYYY-MM-DD-slug" class="tertiary"><!-- title --></a></h2>
   <p class="cluster" style="--cluster-vertical-alignment: baseline">
     <small><!-- date --></small>
-    <!-- tags rendered as: <a href="/?tag=foo" class="pill accent">foo</a> -->
   </p>
   <p><!-- excerpt --></p>
 </article>
