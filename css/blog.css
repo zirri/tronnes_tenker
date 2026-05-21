@@ -17,27 +17,6 @@
     top: var(--space-s);
   }
 
-  /* Tag / filter pill — uses .pill.accent from the badge component, with
-     stronger contrast against the photographic background. */
-  a.pill.accent {
-    background-color: rgba(46, 28, 96, 0.85);
-    border-color: rgba(170, 130, 230, 0.55);
-    color: #f4ecff;
-  }
-
-  a.pill.accent:hover {
-    background-color: rgba(70, 45, 140, 0.92);
-    border-color: rgba(200, 170, 240, 0.7);
-  }
-
-  a.pill[aria-current="true"] {
-    background-color: #d8c8ff;
-    border-color: #d8c8ff;
-    color: #1a0d36;
-    box-shadow: 0 0 0 2px #d8c8ff, 0 0 18px rgba(216, 200, 255, 0.7);
-    outline: none;
-  }
-
   /* Filter sidebar: pull tag/category lists tight under their headings */
   .filter-sidebar section > .eyebrow {
     margin: 0 0 var(--space-2xs);
@@ -83,24 +62,11 @@
   /* Sidebar — one translucent card containing about + categories. */
   .page-sidebar {
     margin-top: 0;
+        font-size: var(--size-small);
   }
 
   .sidebar-card {
     padding: 0 var(--space-s);
-  }
-
-  .sidebar-card hr {
-    display: none;
-  }
-
-  /* Extra breathing room below each pill list, before the next hr */
-  .filter-sections .cluster {
-    margin-bottom: var(--space-l);
-  }
-
-  .sidebar-card p {
-    font-size: var(--size-small);
-    color: #e6dcff;
   }
 
   .about-photo {
@@ -114,11 +80,6 @@
     border-radius: 50%;
     border: var(--border-width) solid rgba(170, 130, 230, 0.45);
     box-shadow: 0 0 18px rgba(80, 50, 140, 0.5);
-  }
-
-  /* Hide filter sections on pages that aren't the index (where filtering applies). */
-  body:not([data-nav="index"]) .filter-sections {
-    display: none;
   }
 
   /* Editor: two equal columns side-by-side on wide screens, stacked below. */
@@ -217,12 +178,4 @@
     border: none;
   }
 
-  /* Hide "Om meg" link in sidebar when already on the om page */
-  body[data-nav="om"] .about-link {
-    display: none;
-  }
-
-  a.pill {
-    transition: background-color 0.18s ease;
-  }
 }
