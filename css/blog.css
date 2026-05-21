@@ -1,72 +1,14 @@
 @layer project {
-  /* Skip-to-content link */
   .skip-link {
     position: absolute;
     top: -100%;
     left: var(--space-s);
     z-index: 100;
-    padding: var(--space-2xs) var(--space-s);
     background-color: var(--color-surface-raised);
-    border: var(--border-width) var(--border-style) var(--color-border-strong);
-    border-radius: var(--border-radius-s);
-    font-weight: var(--font-weight-bold);
-    text-decoration: none;
   }
 
   .skip-link:focus {
     top: var(--space-s);
-  }
-
-  /* Filter sidebar: pull tag/category lists tight under their headings */
-  .filter-sidebar section > .eyebrow {
-    margin: 0 0 var(--space-2xs);
-  }
-
-  .filter-sidebar section > ul.cluster {
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Active filter status — clearer than muted helper text, but not a full pill */
-  .post-status {
-    color: #d8c8ff;
-    font-weight: var(--font-weight-bold);
-  }
-
-  /* Narrow filter sidebar on larger screens */
-  .filter-sidebar {
-    --sidebar-target-width: 15rem;
-  }
-
-  /* The about-photo is cloned above the container by includes.js so it can
-     appear on top when the sidebar stacks below on mobile. Hidden by default. */
-  .about-photo.mobile-photo {
-    display: none;
-  }
-
-  /* On mobile (when the sidebar layout stacks): show the top-of-page photo,
-     hide the one inside the sidebar, and put the sidebar below content. */
-  @media (max-width: 45rem) {
-    .filter-sidebar > .page-sidebar {
-      order: 2;
-    }
-    .page-sidebar .about-photo {
-      display: none;
-    }
-    .about-photo.mobile-photo {
-      display: block;
-      margin-top: var(--space-s);
-    }
-  }
-
-  /* Sidebar — one translucent card containing about + categories. */
-  .page-sidebar {
-    margin-top: 0;
-        font-size: var(--size-small);
-  }
-
-  .sidebar-card {
-    padding: 0 var(--space-s);
   }
 
   .about-photo {
@@ -82,48 +24,7 @@
     box-shadow: 0 0 18px rgba(80, 50, 140, 0.5);
   }
 
-  /* Editor: two equal columns side-by-side on wide screens, stacked below. */
-  .editor-grid {
-    display: grid;
-    gap: var(--space-l);
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 60rem) {
-    .editor-grid {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-    }
-  }
-
-  .editor-grid textarea {
-    font-family: var(--font-family-mono, ui-monospace, monospace);
-    width: 100%;
-  }
-
-  /* Site banner — simple centered title at the top of every page,
-     no header bar, just text floating over the sky. */
-  .site-banner {
-    text-align: center;
-    margin: 0;
-    padding-block: var(--space-xl) var(--space-m);
-    font-size: var(--size-step-2, 1.5rem);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 0.02em;
-  }
-
-  .site-banner a {
-    color: #d8c8ff;
-    text-shadow: 0 0 18px rgba(160, 110, 230, 0.5);
-    text-decoration: none;
-  }
-
-  /* Photographic sunset backdrop — uses /assets/sunset.jpg, with a cold
-     teal/purple/blue colour wash blended on top to keep the palette consistent. */
-  body {
-    background-color: #0a1428;
-  }
-
+  /* Background image */
   body::before {
     content: "";
     position: fixed;
@@ -156,26 +57,16 @@
     mix-blend-mode: normal;
   }
 
-  /* Footer: no background, centered text — sits at the bottom of the page */
-  body > footer:last-of-type {
+  footer, header {
     background-color: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-top: none;
     text-align: center;
     padding-block: var(--space-s);
   }
 
-  /* Post cards (index), post body (article view), and standalone content cards
-     (om, 404) — a translucent darker overlay over the already-darkened
-     background, no border. */
-  #post-list > article,
-  #post-content > article,
-  .content-card {
+  article {
     padding: var(--space-s);
     border-radius: var(--border-radius-m);
     background-color: rgba(0, 0, 0, 0.35);
     border: none;
   }
-
 }

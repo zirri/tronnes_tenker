@@ -1,33 +1,33 @@
 <!doctype html>
 <html lang="nb" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trønnes tenker</title>
-  <link rel="stylesheet" href="/assets/styles/minium.min.css">
-  <link rel="stylesheet" href="/css/blog.css">
-</head>
-<body>
-  <a href="#main-content" class="skip-link">Hopp til innhold</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trønnes tenker</title>
+    <link rel="stylesheet" href="/assets/styles/minium.min.css" />
+    <link rel="stylesheet" href="/css/blog.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Hopp til innhold</a>
 
-  <div data-include="header"></div>
+    <div data-include="header"></div>
 
-  <main id="main-content">
-    <div class="container">
-      <div class="sidebar filter-sidebar no-stretch">
-        <div data-include="sidebar"></div>
-        <article class="flow content-card">
-          <h1>Side ikke funnet</h1>
-          <p>Siden du leter etter finnes ikke eller har blitt flyttet.</p>
-          <p style="--flow-space: var(--space-l)"><a href="/" class="secondary">‹ Tilbake til forsiden</a></p>
-        </article>
+    <main id="main-content">
+      <div class="container">
+        <div class="sidebar" style="--sidebar-target-width: 12rem">
+          <div data-include="sidebar"></div>
+          <article class="flow-loose">
+            <h1>404</h1>
+            <p>Oh no!!! Siden du prøver å gå til finnes ikke, har du en skrivefeil i adressen?</p>
+            <p style="--flow-space: var(--space-l)"><a href="/" class="secondary">‹ Tilbake til forsiden</a></p>
+          </article>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <div data-include="footer"></div>
+    <div data-include="footer"></div>
 
-  <script src="/js/includes.js"></script>
-  <script src="/js/blog.js"></script>
-</body>
+    <script src="/js/includes.js"></script>
+    <script src="/js/blog.js"></script>
+  </body>
 </html>

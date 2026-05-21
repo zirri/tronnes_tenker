@@ -16,14 +16,5 @@ async function inject(selector, url) {
     inject('[data-include="sidebar"]', '/partials/sidebar.html'),
     inject('[data-include="footer"]', '/partials/footer.html'),
   ]);
-  // Clone the about-photo above the main content so it can appear on top
-  // when the sidebar stacks below on mobile.
-  const photo = document.querySelector('.page-sidebar .about-photo');
-  const container = document.querySelector('main .container');
-  if (photo && container) {
-    const clone = photo.cloneNode(true);
-    clone.classList.add('mobile-photo');
-    container.prepend(clone);
-  }
   document.dispatchEvent(new Event('includes:loaded'));
 })();

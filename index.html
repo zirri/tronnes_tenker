@@ -1,38 +1,34 @@
 <!doctype html>
 <html lang="nb" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Trønnes tenker — tanker om teknologi, ideer og hverdagen.">
-  <title>Trønnes tenker</title>
-  <link rel="stylesheet" href="/assets/styles/minium.min.css">
-  <link rel="stylesheet" href="/css/blog.css">
-</head>
-<body data-nav="index">
-  <a href="#main-content" class="skip-link">Hopp til innhold</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Trønnes tenker — tanker om teknologi, ideer og hverdagen." />
+    <title>Trønnes tenker</title>
+    <link rel="stylesheet" href="/assets/styles/minium.min.css" />
+    <link rel="stylesheet" href="/css/blog.css" />
+  </head>
+  <body data-nav="index">
+    <a href="#main-content" class="skip-link">Hopp til innhold</a>
 
-  <div data-include="header"></div>
+    <div data-include="header"></div>
 
-  <main id="main-content">
-    <div class="container">
-      <div class="sidebar filter-sidebar no-stretch">
+    <main id="main-content">
+      <div class="container">
+        <div class="sidebar" style="--sidebar-target-width: 12rem">
+          <div data-include="sidebar"></div>
 
-        <div data-include="sidebar"></div>
-
-        <section aria-label="Innlegg" class="flow">
-          <p id="post-count" class="post-status" aria-live="polite" aria-atomic="true" hidden></p>
-          <div class="flow" id="post-list">
-            <p aria-busy="true">Laster innlegg…</p>
-          </div>
-        </section>
-
+          <section aria-label="Innlegg">
+            <p id="post-count" class="post-status" aria-live="polite" aria-atomic="true" hidden></p>
+            <div class="flow" id="post-list"></div>
+          </section>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <div data-include="footer"></div>
+    <div data-include="footer"></div>
 
-  <script src="/js/includes.js"></script>
-  <script src="/js/blog.js"></script>
-</body>
+    <script src="/js/includes.js"></script>
+    <script src="/js/blog.js"></script>
+  </body>
 </html>

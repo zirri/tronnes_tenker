@@ -1,89 +1,87 @@
 <!doctype html>
 <html lang="nb" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>Trønnes tenker</title>
-  <link rel="stylesheet" href="/assets/styles/minium.min.css">
-  <link rel="stylesheet" href="/css/blog.css">
-</head>
-<body data-nav="ny">
-  <a href="#main-content" class="skip-link">Hopp til innhold</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Trønnes tenker</title>
+    <link rel="stylesheet" href="/assets/styles/minium.min.css" />
+    <link rel="stylesheet" href="/css/blog.css" />
+  </head>
+  <body data-nav="ny">
+    <a href="#main-content" class="skip-link">Hopp til innhold</a>
 
-  <div data-include="header"></div>
+    <div data-include="header"></div>
 
-  <main id="main-content">
-    <div class="container flow">
-      <div class="repel">
-        <h1>Nytt innlegg</h1>
-        <a href="/" class="secondary">← Tilbake</a>
-      </div>
+    <main id="main-content">
+      <div class="container flow-loose">
+        <h2>Nytt innlegg</h2>
 
-      <div class="editor-grid">
-        <section class="flow" aria-labelledby="form-heading">
-          <h2 id="form-heading" class="eyebrow">Skriv</h2>
+        <div class="grid halves">
+          <section aria-labelledby="form-heading">
+            <h2 id="form-heading" class="eyebrow">Skriv her</h2>
+            <article>
+              <label>
+                <span>Tittel</span>
+                <input type="text" id="f-title" autocomplete="off" />
+              </label>
 
-          <label class="flow" style="--flow-space: var(--space-3xs)">
-            <span>Tittel</span>
-            <input type="text" id="f-title" autocomplete="off">
-          </label>
+              <label>
+                <span>Slug <small class="weak">(auto fra tittel — kan overstyres)</small></span>
+                <input type="text" id="f-slug" autocomplete="off" />
+              </label>
 
-          <label class="flow" style="--flow-space: var(--space-3xs)">
-            <span>Slug <small class="weak">(auto fra tittel — kan overstyres)</small></span>
-            <input type="text" id="f-slug" autocomplete="off">
-          </label>
+              <div class="switcher">
+                <label>
+                  <span>Dato</span>
+                  <input type="date" id="f-date" />
+                </label>
+                <label>
+                  <span>Kategori</span>
+                  <input type="text" id="f-category" autocomplete="off" />
+                </label>
+              </div>
 
-          <div class="switcher" style="--switcher-threshold: 20rem">
-            <label class="flow" style="--flow-space: var(--space-3xs)">
-              <span>Dato</span>
-              <input type="date" id="f-date">
-            </label>
-            <label class="flow" style="--flow-space: var(--space-3xs)">
-              <span>Kategori</span>
-              <input type="text" id="f-category" autocomplete="off">
-            </label>
-          </div>
+              <label>
+                <span>Ingress <small class="weak">(valgfri — hentes fra første avsnitt om tom)</small></span>
+                <textarea id="f-excerpt" rows="2"></textarea>
+              </label>
 
-          <label class="flow" style="--flow-space: var(--space-3xs)">
-            <span>Ingress <small class="weak">(valgfri — hentes fra første avsnitt om tom)</small></span>
-            <textarea id="f-excerpt" rows="2"></textarea>
-          </label>
+              <label>
+                <span>Innhold (Markdown)</span>
+                <textarea id="f-body" rows="20" spellcheck="true"></textarea>
+              </label>
 
-          <label class="flow" style="--flow-space: var(--space-3xs)">
-            <span>Innhold (Markdown)</span>
-            <textarea id="f-body" rows="20" spellcheck="true"></textarea>
-          </label>
+              <div class="cluster">
+                <button type="button" id="copy-btn" class="primary">Kopier markdown</button>
+                <button type="button" id="download-btn">Last ned .md</button>
+                <button type="button" id="clear-btn" class="danger">Tøm</button>
+                <span id="save-status" class="post-status" aria-live="polite"></span>
+              </div>
 
-          <div class="cluster">
-            <button type="button" id="copy-btn" class="primary">Kopier markdown</button>
-            <button type="button" id="download-btn">Last ned .md</button>
-            <button type="button" id="clear-btn" class="danger">Tøm</button>
-            <span id="save-status" class="post-status" aria-live="polite"></span>
-          </div>
-
-          <details class="flow" style="--flow-space: var(--space-2xs)">
-            <summary>Markdown-utdata</summary>
-            <textarea id="f-output" rows="14" readonly aria-label="Generert markdown"></textarea>
-          </details>
-        </section>
-
-        <section aria-labelledby="preview-heading" class="flow">
-          <h2 id="preview-heading" class="eyebrow">Forhåndsvisning</h2>
-          <div id="post-content">
-            <article class="flow" id="preview-article">
-              <p class="weak"><em>Begynn å skrive for å se forhåndsvisning.</em></p>
+              <details style="--flow-space: var(--space-2xs)">
+                <summary>Markdown-utdata</summary>
+                <textarea id="f-output" rows="14" readonly aria-label="Generert markdown"></textarea>
+              </details>
             </article>
-          </div>
-        </section>
+          </section>
+
+          <section aria-labelledby="preview-heading">
+            <h2 id="preview-heading" class="eyebrow">Forhåndsvisning</h2>
+            <div id="post-content">
+              <article id="preview-article">
+                <p class="weak"><em>Begynn å skrive for å se forhåndsvisning.</em></p>
+              </article>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <div data-include="footer"></div>
+    <div data-include="footer"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="/js/includes.js"></script>
-  <script src="/js/editor.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/js/includes.js"></script>
+    <script src="/js/editor.js"></script>
+  </body>
 </html>
