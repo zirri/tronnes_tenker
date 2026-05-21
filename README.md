@@ -6,7 +6,7 @@ Personlig blogg. Bygget med plain HTML, CSS og vanilla JS. Hostet på Cloudflare
 
 Du trenger Node.js installert (kun for byggskriptet og lokal server).
 
-### 1. Generer innleggsindeks
+### 1. Generer innlegg
 
 Etter at du har lagt til eller endret et innlegg i `posts/`, kjør:
 
@@ -18,7 +18,7 @@ Dette leser alle `.md`-filer i `posts/`, parser frontmatter og skriver `posts/in
 
 ### 2. Start lokal server
 
-Åpne filen direkte i nettleseren (`file://`) fungerer **ikke** — nettleseren blokkerer `fetch()`-kall til lokale filer. Bruk `npx serve .`:
+Bruk npx for å serve siden:
 
 ```bash
 npx --yes serve .
@@ -26,17 +26,16 @@ npx --yes serve .
 
 ## Skrive et nytt innlegg
 
-1. Go to http://localhost:3000/ny
+1. Gå til http://localhost:3000/ny
 1. Kopier inn md-fila i `posts/` med filnavn `YYYY-MM-DD-slug.md`
-1. Start filen med frontmatter:
+1. Selve fila skal starte med følgende blokk:
 
 ```markdown
 ---
 title: Tittelen på innlegget
 date: 2026-05-09
 category: teknologi
-tags: [ai, verktøy]
-excerpt: En kort beskrivelse som vises på forsiden.
+excerpt: En kort beskrivelse som vises på forsiden (valgfritt)
 ---
 
 Brødteksten starter her...
