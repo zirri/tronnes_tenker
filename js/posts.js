@@ -56,8 +56,14 @@ function update(posts) {
 
   document.querySelectorAll('[data-filter-val]').forEach(el => {
     const val = el.dataset.filterVal;
+    const isActive = val === activeCat;
     el.setAttribute('href', filterUrl(val));
-    el.setAttribute('aria-current', val === activeCat ? 'true' : 'false');
+    el.classList.toggle('primary', isActive);
+    if (isActive) {
+      el.setAttribute('aria-current', 'true');
+    } else {
+      el.removeAttribute('aria-current');
+    }
   });
 
   const list = document.getElementById('post-list');
