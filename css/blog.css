@@ -11,19 +11,6 @@
     top: var(--space-s);
   }
 
-  .about-photo {
-    display: block;
-    width: 100%;
-    max-width: 9rem;
-    margin-inline: auto;
-    margin-block: 0 var(--space-m);
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 50%;
-    border: var(--border-width) solid rgba(170, 130, 230, 0.45);
-    box-shadow: 0 0 18px rgba(80, 50, 140, 0.5);
-  }
-
   /* Background image */
   body::before {
     content: "";
@@ -66,5 +53,9 @@
   article {
     background-color: rgba(0, 0, 0, 0.35);
     border: none;
+  }
+
+  .about-photo{
+    text-align: center;
   }
 }
