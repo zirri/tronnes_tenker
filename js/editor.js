@@ -38,7 +38,7 @@ function buildMarkdown(state) {
   if (state.title) lines.push(`title: ${state.title}`);
   if (state.date) lines.push(`date: ${state.date}`);
   if (state.category) lines.push(`category: ${state.category}`);
-  if (excerpt) lines.push(`excerpt: ${state.excerpt.trim()}`);
+  if (state.excerpt) lines.push(`excerpt: ${state.excerpt.trim()}`);
   lines.push('---', '', state.body || '');
   return lines.join('\n');
 }
