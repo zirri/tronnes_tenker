@@ -158,6 +158,17 @@ async function initPost() {
 
   const { meta, body } = parseFrontmatter(text);
 
+  if (meta.title) document.title = `${meta.title} — Trønnes tenker`;
+  if (meta.excerpt) {
+    let descTag = document.querySelector('meta[name="description"]');
+    if (!descTag) {
+      descTag = document.createElement('meta');
+      descTag.setAttribute('name', 'description');
+      document.head.appendChild(descTag);
+    }
+    descTag.setAttribute('content', meta.excerpt.replace(/<[^>]*>/g, ''));
+  }
+
   const date = formatDate(meta.date);
 
   container.innerHTML = `<article class="card">
