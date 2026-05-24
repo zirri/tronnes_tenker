@@ -36,7 +36,7 @@ function filterUrl(val) {
 
 function postCard(post) {
   const date = formatDate(post.date);
-  return `<article class="flow">
+  return `<article class="card">
     <div class="repel">
       <span class="eyebrow">${post.category || ''}</span>
       ${date ? `<time class="eyebrow" datetime="${post.date}">${date}</time>` : ''}
@@ -101,7 +101,7 @@ async function renderSidebarCategories(posts, hrefFn) {
   if (!catList) return;
   const cats = [...new Set(posts.map(p => p.category).filter(Boolean))].sort();
   catList.innerHTML = cats.map(c =>
-    `<li><a href="${hrefFn(c)}" class="pill accent" data-filter-val="${c}">${c}</a></li>`
+    `<a href="${hrefFn(c)}" class="pill" data-filter-val="${c}">${c}</a>`
   ).join('');
 }
 
@@ -109,7 +109,7 @@ async function initIndex() {
   const list = document.getElementById('post-list');
   const posts = await fetchPosts();
   if (!posts) {
-    list.innerHTML = '<p>Kunne ikke laste innlegg.</p>';
+    list.innerHTML = '<p>Ingen innlegg å vise</p>';
     return;
   }
 
@@ -154,15 +154,15 @@ async function initPost() {
 
   const date = formatDate(meta.date);
 
-  container.innerHTML = `<article class="flow">
+  container.innerHTML = `<article class="card">
     <div class="repel">
       <span class="eyebrow">${meta.category || ''}</span>
       ${date ? `<time class="eyebrow" datetime="${meta.date}">${date}</time>` : ''}
     </div>
     <h1>${meta.title || slug}</h1>
     <hr>
-    <div class="flow">${marked.parse(body)}</div>
-    <p class="post-back" style="--flow-space: var(--space-l)"><a href="/" class="secondary">‹ Alle innlegg</a></p>
+    <div>${marked.parse(body)}</div>
+    <p><a href="/" class="secondary">‹ Alle innlegg</a></p>
   </article>`;
 }
 

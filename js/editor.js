@@ -27,25 +27,6 @@ function formatDate(str) {
   });
 }
 
-function deriveExcerpt(body, maxLen = 200) {
-  const firstPara = (body || '')
-    .replace(/^\s+/, '')
-    .split(/\r?\n\s*\r?\n/)
-    .find(p => p.trim() && !p.trim().startsWith('#'));
-  if (!firstPara) return '';
-  const plain = firstPara
-    .replace(/\r?\n/g, ' ')
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
-    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-    .replace(/[*_`>#]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-  if (plain.length <= maxLen) return plain;
-  const cut = plain.slice(0, maxLen);
-  const lastSpace = cut.lastIndexOf(' ');
-  return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut) + '…';
-}
-
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -57,8 +38,7 @@ function buildMarkdown(state) {
   if (state.title) lines.push(`title: ${state.title}`);
   if (state.date) lines.push(`date: ${state.date}`);
   if (state.category) lines.push(`category: ${state.category}`);
-  const excerpt = state.excerpt.trim() || deriveExcerpt(state.body);
-  if (excerpt) lines.push(`excerpt: ${excerpt}`);
+  if (excerpt) lines.push(`excerpt: ${state.excerpt.trim()}`);
   lines.push('---', '', state.body || '');
   return lines.join('\n');
 }
@@ -81,7 +61,7 @@ function renderPreview(state) {
     </div>
     <h1>${escapeHtml(state.title || '(uten tittel)')}</h1>
     <hr>
-    <div class="flow">${bodyHtml}</div>
+    <div>${bodyHtml}</div>
   `;
 }
 
