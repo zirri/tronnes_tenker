@@ -1,5 +1,5 @@
 ---
-title: Tid for å verne om velferdsstaten
+title: Vi må verne om velferdsstaten
 date: 2026-07-03
 category: samfunn
 excerpt: Velferdsstaten bygges ned bit for bit, nå er tiden for å verne om den!
