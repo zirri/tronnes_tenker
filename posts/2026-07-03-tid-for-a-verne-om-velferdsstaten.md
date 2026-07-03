@@ -17,4 +17,4 @@ Skole og barnehager er i dag under press. De ansatte har ofte ikke rammer til å
 
 Til slutt er det eldreomsorgen som også er under et lignende press som skolene. Vi blir flere og flere eldre, og vi blir færre som skal betale for det. Selvsagt trengs det å se på effektivisering, men det kan ikke gå på bekostning av at folk kan ha et verdig liv også når helsa svikter.
 
-Det finnes av en eller annen mystisk grunn alltid penger i statskassa når det blir forsvar eller kriser på agendaen. For politikere er det selvsagt mer populært å komme med nye løfter, men nå er det på tide å også prioritere penger til å verne om det vi har. Ellers risikerer vi at det forvitrer mellom hendene på oss, og det er i alle fall dyrt å fikse.
+Det finnes av en eller annen mystisk grunn alltid penger i statskassa når det blir forsvar eller kriser på agendaen. For politikere er det selvsagt mer populært å komme med nye løfter, men nå er det på tide å også prioritere penger til å verne om det vi har. Ellers risikerer vi at det forvitrer mellom hendene på oss, og det er i alle fall dyrt å fikse!
