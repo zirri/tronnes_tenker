@@ -88,13 +88,9 @@ function update(posts) {
 }
 
 async function fetchPosts() {
-  try {
-    const res = await fetch('/posts/index.json');
-    if (!res.ok) throw new Error(res.status);
-    return await res.json();
-  } catch {
-    return null;
-  }
+  const res = await fetch('/posts/index.json');
+  if (!res.ok) throw new Error(`HTTP ${res.status} henting /posts/index.json`);
+  return await res.json();
 }
 
 async function renderSidebarCategories(posts, hrefFn) {
@@ -113,9 +109,12 @@ async function renderSidebarCategories(posts, hrefFn) {
 
 async function initIndex() {
   const list = document.getElementById('post-list');
-  const posts = await fetchPosts();
-  if (!posts) {
-    list.innerHTML = '<p>Ingen innlegg å vise</p>';
+  let posts;
+  try {
+    posts = await fetchPosts();
+  } catch (err) {
+    list.innerHTML = `<p>Ingen innlegg å vise (${err.message})</p>`;
+    if (typeof showErrorBanner === 'function') showErrorBanner(`initIndex: ${err.message}`);
     return;
   }
 
@@ -136,8 +135,13 @@ async function initIndex() {
 }
 
 async function initSidebarOnly() {
-  const posts = await fetchPosts();
-  if (!posts) return;
+  let posts;
+  try {
+    posts = await fetchPosts();
+  } catch (err) {
+    if (typeof showErrorBanner === 'function') showErrorBanner(`initSidebarOnly: ${err.message}`);
+    return;
+  }
   await renderSidebarCategories(posts, c => `/?category=${encodeURIComponent(c)}`);
 }
 
