@@ -182,7 +182,7 @@ async function initPost() {
     </div>
     <h1>${meta.title || slug}</h1>
     <hr>
-    <div>${marked.parse(body)}</div>
+    <div class="flow flow-loose">${marked.parse(body)}</div>
     <p><a href="/" class="secondary">‹ Alle innlegg</a></p>
   </article>`;
 }
